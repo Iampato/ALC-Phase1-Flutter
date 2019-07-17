@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,8 +11,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: Colors.blue
       ),
-      home: HomePage();
-
+      home: HomePage(),
+      routes: {
+        "/about": (_) => new WebviewScaffold(
+          url: "https://andela.com/alc",
+          appBar: new AppBar(
+            title: new Text("About ALC"),
+          ),
+        ),
+        
+      },
     );
   }
 }
