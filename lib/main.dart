@@ -1,5 +1,6 @@
+import 'package:alc_phase1/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
+import 'about.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,15 +13,6 @@ class MyApp extends StatelessWidget {
         primaryColor: Colors.blue
       ),
       home: HomePage(),
-      routes: {
-        "/about": (_) => new WebviewScaffold(
-          url: "https://andela.com/alc",
-          appBar: new AppBar(
-            title: new Text("About ALC"),
-          ),
-        ),
-        
-      },
     );
   }
 }
@@ -32,37 +24,54 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(" ALC Phase 1"),
       ),
-      body: Column(
-        children: <Widget>[
-          Text("Welcome to A.L.C 4.0",
-              style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)
-          ),
-          SizedBox(height: 10),
-          RaisedButton(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5)
+      body: Align(
+        alignment: Alignment.center,
+        child: Column( 
+          children: <Widget>[
+            SizedBox(height: 10),
+            Text("Welcome to A.L.C 4.0",
+                style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,fontStyle: FontStyle.italic)
             ),
-            color: Colors.orange,
-            child: Text("About ALC"),
-            onPressed: (){
-              //TODO
-            },
-          ),
-          SizedBox(height: 5),
-          RaisedButton(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(5)
+            SizedBox(height: 20),
+            RawMaterialButton(
+              constraints: BoxConstraints(
+                minHeight: 50,
+                minWidth: 150
+              ),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)
+              ),
+              elevation: 10,
+              fillColor: Colors.orange,
+              child: Text("About ALC",
+                style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
+              onPressed: (){
+                 Navigator.push(context,MaterialPageRoute(
+                  builder: (context) => AboutPage()
+                ));
+              },
             ),
-            color: Colors.orange,
-            child: Text("My Profile"),
-            onPressed: (){
-              MaterialPageRoute(
-                  builder: (BuildContext context) {
-                    return ;//TODO
-                  });
-            },
-          ),
-        ],
+            SizedBox(height: 11),
+            RawMaterialButton(
+              constraints: BoxConstraints(
+                minHeight: 50,
+                minWidth: 150
+              ),
+              elevation: 10,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(5)
+              ),
+              fillColor: Colors.orange,
+              child: Text("My Profile",
+                style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold)),
+              onPressed: (){
+                Navigator.push(context,MaterialPageRoute(
+                  builder: (context) => ProfilePage()
+                ));
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
