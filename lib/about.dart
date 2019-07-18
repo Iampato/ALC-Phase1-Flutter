@@ -18,7 +18,12 @@ class AboutPage extends StatelessWidget {
       url: "https://andela.com/alc/",
       initialChild: Container(
         alignment: Alignment.center,
-        child: CircularProgressIndicator(),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            CircularProgressIndicator()
+          ],
+        ),
       ),
     );
   }
